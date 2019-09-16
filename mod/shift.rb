@@ -24,15 +24,6 @@ module Shift
   def rotate_msg(shift)
     alpha = ('a'..'z').to_a << ' '
     rotated_msg = @msg.downcase.split('')
-    # each_with_index
-    rotated_msg.each_with_index do |char, index|
-      if alpha.include?(char)
-        alpha_index = alpha.index(char)
-        rotated_alpha = alpha.rotate(shift[index % 4])
-        rotated_msg[index] = rotated_alpha[alpha_index]
-      end
-    end
-    rotated_msg.join('')
   end
 
 end
