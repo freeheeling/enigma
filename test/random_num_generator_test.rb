@@ -12,7 +12,7 @@ class RandNumGeneratorTest < Minitest::Test
     num = RandNumGenerator.create_num
 
     assert_equal true, num.length == 5
-    assert_equal true, num.to_i > 0 && num.to_i < 100000
+    assert_equal true, num.to_i > 0 && num.to_i < 100_000
   end
 
 end
