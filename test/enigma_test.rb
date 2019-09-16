@@ -1,7 +1,7 @@
 require_relative 'test_helper'
 
-require './lib/enigma'
 require 'date'
+require './lib/enigma'
 
 class EnigmaTest < Minitest::Test
 
@@ -35,27 +35,40 @@ class EnigmaTest < Minitest::Test
 
   # encrypt a message with a key (uses today's date)
   def test_it_can_encrypt_with_a_key_and_current_date
+  # mock & stub
+    Date.expects(:today).returns(Date.new(2095, 8, 4))
     encrypted = @enigma.encrypt("hello world", "02715")
 
     expected = {
-      decryption: "hello world",
+      decryption: "keder ohulw",
       key: "02715",
-      date: "130919"
+      date: "040895"
     }
     assert_equal expected, @enigma.encrypt("hello world", "02715")
   end
 
   #decrypt a message with a key (uses today's date)
   def test_it_can_decrypt_with_a_key_and_current_date
+  # mock & stub
+    Date.expects(:today).returns(Date.new(2095,8,4))
+
     expected = {
-      # decryption hash
+      decryption: "hello world",
+      key: "02715",
+      date: "040895"
     }
-    assert_equal expected, @enigma.decrypt(encrypted[:encryption], "02715")
+    assert_equal expected, @enigma.decrypt("keder ohulw", "02715")
   end
 
   def test_it_can_encrypt_with_a_random_key_and_current_date
-    expted = {
-      # encryption hash
+  # mock & stub
+    RandNumGenerator.expects(:create_num).returns("02715")
+    Date.expects(:today).returns(Date.new(2095,8,4))
+
+    expected = {
+      encryption: "keder ohulw",
+      key: "02715",
+      date: "040895"
     }
     assert_equal expected, @enigma.encrypt("hello world")
   end
