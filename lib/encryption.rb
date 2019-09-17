@@ -3,16 +3,16 @@ require './mod/shift'
 class Encryption
   include Shift
 
-  attr_reader :msg, :key, :date
+  attr_reader :message, :key, :date
 
-  def initialize(msg, key, date)
-    @msg = msg
+  def initialize(message, key, date)
+    @message = message
     @key = key
     @date = date
   end
 
   def encrypt
-    rotate_msg(shifts)
+    encrypt_msg(message, shift)
   end
 
 end
