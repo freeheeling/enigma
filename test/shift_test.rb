@@ -17,12 +17,14 @@ class ShiftTest < Minitest::Test
     assert_equal [0, 1, 2, 1], @encryption.offsets
   end
 
-  def test_keys_and_offsets_sum_to_create_shifts
-    assert_equal [10, 1, 2, 2], @encryption.shifts
+  def test_sum_of_keys_and_offsets_creates_shift
+    assert_equal [10, 1, 2, 2], @encryption.shift
   end
 
-  def test_rotate_msg
-    assert_equal "keder ohulw", @encryption.rotate_msg([10, 1, 2, 2])
+  def test_it_creates_encrypted_message
+    message = "hello world"
+    shift = [10, 1, 2, 2]
+    assert_equal "rfnnyayqamf", @encryption.encrypt_msg(message, shift)
   end
 
 end
