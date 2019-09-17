@@ -13,7 +13,7 @@ class DecryptionTest < Minitest::Test
   end
 
   def test_initialization
-    assert_equal "keder ohulw", @decryption.msg
+    assert_equal "keder ohulw", @decryption.ciphertext
     assert_equal "02715", @decryption.key
     assert_equal "040895", @decryption.date
   end
