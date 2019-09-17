@@ -17,13 +17,24 @@ module Shift
     [a_offset, b_offset, c_offset, d_offset]
   end
 
-  def shifts
-    keys.zip(offsets).map { |shift| shift[0] + shift[1] }
+  def shift
+    shifts = []
+    keys.zip(offsets).each do |shift|
+      shifts << shift[0] + shift[1]
+    end
+    shifts
   end
 
-  def rotate_msg(shift)
-    alpha = ('a'..'z').to_a << ' '
-    rotated_msg = @msg.downcase.split('')
+  def encrypt_msg(message, shift)
+    chars = ("a".."z").to_a << " "
+    transform_msg = message.downcase.split("")
+    transform_msg.each_with_index do |char, index|
+      if chars.include?(char)
+        chars_index = chars.index(char)
+        transform_chars = chars.rotate(shift[index % 4])
+        transform_msg[index] = transform_chars[chars_index]
+      end
+    end.join("")
   end
 
 end
