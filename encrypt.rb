@@ -1,25 +1,14 @@
-# command line interface for encryption and decryption
+require './lib/enigma'
 
-# takes two command line arguments
-# The first is an existing file that contains a message to encrypt.
-# The second is a file where your program should write the encrypted message.
+msg = File.open(ARGV[0], "r")
+input = msg.read
+msg.close
 
-# In addition to writing the encrypted message to the file,
-# program should output to the screen the file it wrote to,
-# the key and the date.
-
-handle = File.open(ARGV[0], "r")
-
-incoming_text = handle.read
-
-handle.close
-
-capitalized_text = incoming_text.upcase
+enigma = Enigma.new
+encrypt = enigma.encrypt(msg)
 
 writer = File.open(ARGV[1], "w")
-
-writer.write(capitalized_text)
-
+writer.write(encrypt[:encryption])
 writer.close
 
-# Created 'encrypted.txt' with the key 82648 and date 240818
+puts "Created '#{ARGV[1]}' with the key #{encrypt[:key]} and date #{encrypt[:date]}"
