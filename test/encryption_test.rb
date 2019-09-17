@@ -13,7 +13,7 @@ class EncryptionTest < Minitest::Test
   end
 
   def test_initialization
-    assert_equal "hello world", @encryption.msg
+    assert_equal "hello world", @encryption.message
     assert_equal "02715", @encryption.key
     assert_equal "040895", @encryption.date
   end
