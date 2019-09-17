@@ -3,17 +3,19 @@ require './mod/shift'
 class Decryption
   include Shift
 
-  attr_reader :msg, :key, :date
+  attr_reader :ciphertext, :key, :date
 
-  def initialize(msg, key, date)
-    @msg = msg
+  def initialize(ciphertext, key, date)
+    @ciphertext = ciphertext
     @key = key
     @date = date
   end
 
-  def decrypt
-    shift = shifts.map { |shift| 27 - shift }
-    rotate_msg(shifts)
+  def decrypt                           
+    shifts = shift.map do |rotate|
+      27 - rotate
+    end
+    encrypt_msg(@ciphertext, shifts)
   end
 
 end
