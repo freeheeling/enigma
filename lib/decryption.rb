@@ -11,7 +11,7 @@ class Decryption
     @date = date
   end
 
-  def decrypt                           
+  def decrypt
     shifts = shift.map do |rotate|
       27 - rotate
     end
