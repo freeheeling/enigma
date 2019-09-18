@@ -24,6 +24,8 @@ Self-assessed score: 3 / 4
 
 Best attempts were made to write tests before implementing code, although this was not always the case, an area in which there is acknowledged need for improvement. Overall testing covers every method, evidence for which is supported by [SimpleCov](https://github.com/colszowka/simplecov) test coverage analysis. All tests are named in a descriptive manner that clearly communicates the methods being tested. Mocks and stubs were implemented in three tests for methods whose optional parameters include a randomly generated number and/or current date.
 
+![simplecov](https://user-images.githubusercontent.com/50811220/65155470-df314b80-da1c-11e9-839d-72a239a8074e.png)
+
 Self-assessed score: 2.5 / 4
 
 ### Version Control ###
