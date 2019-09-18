@@ -25,14 +25,17 @@ module Shift
     shifts
   end
 
+  def characters
+    ("a".."z").to_a << " "
+  end
+
   def encrypt_msg(message, shift)
-    chars = ("a".."z").to_a << " "
     transform_msg = message.downcase.split("")
-    transform_msg.each_with_index do |char, index|
-      if chars.include?(char)
-        chars_index = chars.index(char)
-        transform_chars = chars.rotate(shift[index % 4])
-        transform_msg[index] = transform_chars[chars_index]
+    transform_msg.each.with_index do |character, index| unless
+      !characters.include?(character)
+        transform_characters = characters.rotate(shift[index % 4])
+        characters_position = characters.index(character)
+        transform_msg[index] = transform_characters[characters_position]
       end
     end.join("")
   end
